@@ -2206,7 +2206,7 @@ ul {
   }
 }
 
-@media (max-width: 930px) {
+@media (max-width: 1080px) {
   #navbar {
     padding: 0.8rem 1.3rem;
   }

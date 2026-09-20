@@ -4,40 +4,12 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Contact</title>
-    <meta name="description"
-        content="Contactez l'Institut Kyeshero : adresse, téléphone, email et formulaire de préinscription pour l'année 2026-2027.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://institutkyeshero.com/contacts.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Institut Kyeshero">
-    <meta property="og:title" content="Contact | Institut Kyeshero">
-    <meta property="og:description"
-        content="Contactez l'Institut Kyeshero : adresse, téléphone, email et formulaire de préinscription pour l'année 2026-2027.">
-    <meta property="og:image" content="https://institutkyeshero.com/logos/logo%20(2).png">
-    <meta property="og:url" content="https://institutkyeshero.com/contacts.html">
-    <meta property="og:locale" content="fr_FR">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Contact | Institut Kyeshero">
-    <meta name="twitter:description"
-        content="Contactez l'Institut Kyeshero : adresse, téléphone, email et formulaire de préinscription pour l'année 2026-2027.">
+    <title>Contacts</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./pictures/logos/logoshaut2.png">
-    <!-- Fil d'Ariane pour Google -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://institutkyeshero.com/" },
-        { "@type": "ListItem", "position": 2, "name": "Contact", "item": "https://institutkyeshero.com/contacts.html" }
-      ]
-    }
-    </script>
 </head>
 
 <body>
@@ -88,8 +60,7 @@
                 <a href="galerie.html">Galerie</a>
                 <a href="propos.html">À Propos</a>
                 <a href="contacts.html" class="active">Contact</a>
-                <a href="inscriptions.html">Inscription</a>
-                <a href="temoignages.html">Témoignages</a>
+                <!-- <a href="temoignages.html">Témoignages</a> -->
                 <a href="espacenumerique.html" class="nav-espace">Espace Numérique</a>
             </div>
             <div class="hamburger" onclick="openMobileNav()">
@@ -109,14 +80,13 @@
                         <p>Conscience dans le travail et la discipline</p>
                     </div> -->
                 </div>
-                <button class="mob-close" onclick="closeMobileNav()"><i class="fa-solid fa-xmark"></i></button>
+                <button class="mob-close" onclick="closeMobileNav()">✕</button>
             </div>
             <a href="index.html">Accueil</a>
             <a href="sections.html">Sections & Formation</a>
             <a href="actualites.html">Actualités</a>
             <a href="galerie.html">Galerie</a>
             <a href="propos.html">À Propos</a>
-            <a href="inscriptions.html" style="color:var(--gold-light)">Inscription</a>
             <!-- <a href="contacts.html">Contact & Inscriptions</a> -->
             <a href="temoignages.html" style="color:var(--gold-light)">Témoignages</a>
             <a href="espacenumerique.html" style="color:var(--gold-light)">Espace Numérique</a>
@@ -135,7 +105,7 @@
                 </div>
             </section>
             <section class="section">
-                <div class="section-inner contact-grid">
+                <div class="section-inner" style="display:grid;grid-template-columns:1fr 1fr;gap:64px">
                     <div>
                         <div class="section-label">Nous contacter</div>
                         <h2 class="section-h2">Informations</h2>
@@ -188,16 +158,16 @@
                         <p style="font-size:14px;color:var(--text);line-height:1.8;margin:20px 0">Présentez-vous au
                             secrétariat avec les documents suivants :</p>
                         <div style="display:flex;flex-direction:column;gap:12px">
-                            <div class="info-tile reveal">
-                                <span class="info-tile-icon"><i class="fa-solid fa-file-lines"></i></span>
+                            <div class="info-tile">
+                                <span class="info-tile-icon">📋</span>
                                 <div>
                                     <div class="info-tile-label">Bulletin scolaire</div>
                                     <div style="font-size:14px;font-weight:600;color:var(--ink)">Dernière année réussie
                                     </div>
                                 </div>
                             </div>
-                            <div class="info-tile reveal">
-                                <span class="info-tile-icon"><i class="fa-solid fa-id-card"></i></span>
+                            <div class="info-tile">
+                                <span class="info-tile-icon">🪪</span>
                                 <div>
                                     <div class="info-tile-label">Carte d'identité parent/tuteur</div>
                                     <div style="font-size:14px;font-weight:600;color:var(--ink)">Copie lisible</div>
@@ -218,29 +188,26 @@
     </div>
     <!-- /page-main -->
     <!-- FOOTER -->
-    <!-- FOOTER -->
     <footer id="main-footer">
         <div class="footer-grid">
             <div class="footer-brand">
                 <div class="footer-logo-row">
                     <div class="logo-emblem">
-                        <img src="./logos/logo (2).png" alt="Institut Kyeshero">
+                        <img src="./logos/logo (2).png" alt="logo">
                     </div>
                     <span class="footer-brand-name">Institut Kyeshero</span>
                 </div>
                 <p class="footer-brand-desc">École conventionnée protestante de la 8e CEPAC, formant depuis 1997
                     les jeunes de Goma aux valeurs d'excellence, de discipline et de foi.</p>
                 <div class="footer-socials">
-                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                    <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://wa.me/243971234567" aria-label="WhatsApp" target="_blank"><i
-                            class="fa-brands fa-whatsapp"></i></a>
+                    <a href="#"><img src="./icons/book.png"></a>
+                    <a href="#"><img src="./icons/x.png"></a>
+                    <a href="#"><img src="./icons/insta.png"></a>
+                    <!-- <a href="#"><img src="./icons/whastapp.png"></a> -->
                 </div>
             </div>
-
-            <details class="footer-col" open>
-                <summary>Accès rapide <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
+            <div class="footer-col">
+                <h4>Accès rapide</h4>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
                     <li><a href="sections.html">Nos sections</a></li>
@@ -248,47 +215,44 @@
                     <li><a href="galerie.html">Galerie</a></li>
                     <li><a href="propos.html">À propos</a></li>
                     <li><a href="contacts.html">Contact</a></li>
-                    <li><a href="inscriptions.html">Inscription</a></li>
-                    <li><a href="espacenumerique.html">Espace Numérique</a></li>
                 </ul>
-            </details>
-
-            <details class="footer-col" open>
-                <summary>Nos sections <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
+            </div>
+            <div class="footer-col">
+                <h4>Sections</h4>
                 <ul>
-                    <li><a href="sections.html#construction">Construction</a></li>
-                    <li><a href="sections.html#couture">Coupe Couture</a></li>
-                    <li><a href="sections.html#electricite">Électricité</a></li>
-                    <li><a href="sections.html#mecanique">Mécanique</a></li>
-                    <li><a href="sections.html#base">Éducation de base</a></li>
+                    <li><a href="#">Construction</a></li>
+                    <li><a href="#">Coupe Couture</a></li>
+                    <li><a href="#">Électricité</a></li>
+                    <li><a href="#">Mécanique</a></li>
+                    <li><a href="#">Education de base</a></li>
                 </ul>
-            </details>
-
-            <details class="footer-col" open>
-                <summary>Contact <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
                 <ul>
-                    <li><a href="https://maps.google.com/?q=Institut+Kyeshero+Goma" target="_blank"><i
-                                class="fa-solid fa-location-dot"></i> Av. Kyeshero, Goma</a></li>
-                    <li><a href="tel:+243971234567"><i class="fa-solid fa-phone"></i> +243 97 123 4567</a></li>
-                    <li><a href="mailto:contact@institutkyeshero.com"><i class="fa-solid fa-envelope"></i>
-                            contact@institutkyeshero.com</a></li>
-                    <li><span><i class="fa-solid fa-clock"></i> Lun–Ven 7h30–16h30</span></li>
+                    <li><a href="#">Av. Kyeshero, Goma</a></li>
+                    <li><a href="#">+243 97 123 4567</a></li>
+                    <li><a href="#">contact@ikyeshero-goma.cd</a></li>
+                    <li><a href="#">Lun-Ven 7h30-16h30</a></li>
                 </ul>
-            </details>
+            </div>
         </div>
         <div class="footer-bottom">
-            <span>&copy; 2026 Institut Kyeshero — Tous droits réservés</span>
-            <span class="footer-credit">Conçu par EbenJosh Tech & Services</span>
+            <span>&copy; 2026 Institut Kyeshero de Goma — Tous droits réservés</span>
+            <div class="footer-motto">
+                <span style="font-size:13px;color:rgba(255,255,255,.5)">
+                    Conçu par EbenJosh Tech & Services
+                </span>
+            </div>
         </div>
     </footer>
 
     <!-- WHATSAPP -->
-    <a href="https://wa.me/243971234567" class="wa-btn" aria-label="Contacter sur WhatsApp" target="_blank">
-        <i class="fa-brands fa-whatsapp"></i>
+    <a href="https://wa.me/243971234567" class="wa-btn" target="_blank">
+        <img src="./icons/whastap.png">
     </a>
 
     <script src="index.js"></script>
-    <script src="footer.js"></script>
 </body>
 
 </html>

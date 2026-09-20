@@ -4,12 +4,40 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Galerie</title>
+    <title>Galerie Photos</title>
+    <meta name="description"
+        content="Photos de la vie scolaire, des ateliers et des activités de l'Institut Kyeshero, école conventionnée protestante à Goma.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://institutkyeshero.com/galerie.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Institut Kyeshero">
+    <meta property="og:title" content="Galerie Photos | Institut Kyeshero">
+    <meta property="og:description"
+        content="Photos de la vie scolaire, des ateliers et des activités de l'Institut Kyeshero, école conventionnée protestante à Goma.">
+    <meta property="og:image" content="https://institutkyeshero.com/logos/logo%20(2).png">
+    <meta property="og:url" content="https://institutkyeshero.com/galerie.html">
+    <meta property="og:locale" content="fr_FR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galerie Photos | Institut Kyeshero">
+    <meta name="twitter:description"
+        content="Photos de la vie scolaire, des ateliers et des activités de l'Institut Kyeshero, école conventionnée protestante à Goma.">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./pictures/logos/logoshaut2.png">
+    <!-- Fil d'Ariane pour Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://institutkyeshero.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Galerie", "item": "https://institutkyeshero.com/galerie.html" }
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -60,7 +88,8 @@
                 <a href="galerie.html" class="active">Galerie</a>
                 <a href="propos.html">À Propos</a>
                 <a href="contacts.html">Contact</a>
-                <!-- <a href="temoignages.html">Témoignages</a> -->
+                <a href="inscriptions.html">Inscription</a>
+                <a href="temoignages.html">Témoignages</a>
                 <a href="espacenumerique.html" class="nav-espace">Espace Numérique</a>
             </div>
             <div class="hamburger" onclick="openMobileNav()">
@@ -80,13 +109,14 @@
                         <p>Conscience dans le travail et la discipline</p>
                     </div> -->
                 </div>
-                <button class="mob-close" onclick="closeMobileNav()">✕</button>
+                <button class="mob-close" onclick="closeMobileNav()"><i class="fa-solid fa-xmark"></i></button>
             </div>
             <a href="index.html">Accueil</a>
             <a href="sections.html">Sections & Formation</a>
             <a href="actualites.html">Actualités</a>
             <a href="galerie.html">Galerie</a>
             <a href="propos.html">À Propos</a>
+            <a href="inscriptions.html" style="color:var(--gold-light)">Inscription</a>
             <!-- <a href="contacts.html">Contact & Inscriptions</a> -->
             <a href="temoignages.html" style="color:var(--gold-light)">Témoignages</a>
             <a href="espacenumerique.html" style="color:var(--gold-light)">Espace Numérique</a>
@@ -95,7 +125,7 @@
         <!-- ─── GALERIE ─── -->
         <div id="view-galerie">
             <section class="page-hero">
-                <div class="page-hero-media" style="background-image:url(./pictures/e3a.png)"></div>
+                <div class="page-hero-media" style="background-image:url('./assets/galerie.webp')"></div>
                 <span class="page-hero-circle" aria-hidden="true"></span>
                 <span class="page-hero-circle-2" aria-hidden="true"></span>
                 <div class="page-hero-inner">
@@ -106,58 +136,167 @@
             </section>
             <section class="section">
                 <div class="section-inner">
-                    <div class="gallery-masonry" style="grid-template-columns:repeat(3,1fr)">
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/back\ \(2\).jpg);height:220px;grid-column:span 2">
+
+                    <!-- FILTRES -->
+                    <div class="gallery-filters" role="tablist" aria-label="Filtrer la galerie">
+                        <button class="gallery-filter-btn active" data-filter="all" type="button">Tout</button>
+                        <button class="gallery-filter-btn" data-filter="vie" type="button">Vie scolaire</button>
+                        <button class="gallery-filter-btn" data-filter="sections" type="button">Sections &amp;
+                            Ateliers</button>
+                        <button class="gallery-filter-btn" data-filter="campus" type="button">Notre Campus</button>
+                    </div>
+
+                    <div class="gallery-masonry" id="galleryGrid" style="grid-template-columns:repeat(3,1fr)">
+
+                        <!------------------- vie scolaire ----------------->
+
+                        <div class="gal-item reveal" data-category="vie" data-caption="Un moment de la vie scolaire"
+                            style="height:220px">
+                            <img src="./pictures/IMG-20260624-WA0052.jpg"
+                                alt="Moment de la vie scolaire à l'Institut Kyeshero" loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/IMG-20260624-WA0052.jpg);height:220px">
+                        <div class="gal-item reveal" data-category="vie" data-caption="Élèves en classe"
+                            style="height:220px">
+                            <img src="./pictures/6eme.jpg" alt="Élèves de l'Institut Kyeshero en classe" loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item" style="background-image:url(./pictures/6eme.jpg);height:220px">
+                        <div class="gal-item reveal" data-category="vie" data-caption="Vie scolaire"
+                            style="height:220px">
+                            <img src="./pictures/autresimages (4).jpg" alt="Vie scolaire à l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/autresimages\ \(2\).jpg);height:220px">
+                        <div class="gal-item reveal" data-category="vie" data-caption="Vie scolaire"
+                            style="height:220px">
+                            <img src="./pictures/autresimages (2).jpg" alt="Vie scolaire à l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/autresimages\ \(4\).jpg);height:220px">
+                        <div class="gal-item reveal" data-category="vie" data-caption="Vie scolaire"
+                            style="height:220px">
+                            <img src="./pictures/autresimages (5).jpg" alt="Vie scolaire à l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/autresimages\ \(5\).jpg);height:220px;grid-column:span 2">
+
+                        <!-------------------- campus ---------------------->
+
+                        <!-- <div class="gal-item reveal" data-category="campus" data-caption="Vue du campus"
+                            style="height:220px">
+                            <img src="./pictures/back (1).jpg" alt="Vue du campus de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+                        <!-- <div class="gal-item reveal" data-category="campus" data-caption="Infrastructures scolaires"
+                            style="height:220px">
+                            <img src="./pictures/back/qw.jpg" alt="Infrastructures du campus de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+                        <!-- <div class="gal-item reveal" data-category="campus" data-caption="Le campus de l'Institut"
+                            style="height:220px">
+                            <img src="./pictures/back/qwe.jpg" alt="Le campus de l'Institut Kyeshero" loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+                        <!-- <div class="gal-item reveal" data-category="campus" data-caption="Nos infrastructures"
+                            style="height:220px">
+                            <img src="./pictures/back/qwert.jpg" alt="Infrastructures de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+                        <!-- <div class="gal-item reveal" data-category="campus" data-caption="Vue extérieure du campus"
+                            style="height:220px;grid-column:span 2">
+                            <img src="./pictures/back/qwer.jpg" alt="Vue extérieure du campus de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+                        <!-- <div class="gal-item reveal" data-category="campus"
+                            data-caption="Le bâtiment principal de l'Institut" style="height:220px;grid-column:span 2">
+                            <img src="./pictures/back (2).jpg" alt="Bâtiment principal de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div> -->
+
+                        <!------------------------- sections -------------------------->
+
+                        <div class="gal-item reveal" data-category="sections" data-caption="Section Électricité"
+                            style="height:220px;grid-column:span 2">
+                            <img src="./pictures/elec.webp" alt="Section Électricité de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item" style="background-image:url(./pictures/back\ \(1\).jpg);height:220px">
+                        <div class="gal-item reveal" data-category="sections" data-caption="Atelier Mécanique"
+                            style="height:220px">
+                            <img src="./pictures/meca.jpg" alt="Atelier Mécanique de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/autresimages\ \(2\).jpg);height:220px">
+                        <div class="gal-item reveal" data-category="sections" data-caption="Atelier Électricité"
+                            style="height:220px">
+                            <img src="./pictures/électricien.png" alt="Atelier Électricité de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
-                        <div class="gal-item"
-                            style="background-image:url(./pictures/autresimages\ \(2\).jpg);height:220px">
+                        <div class="gal-item reveal" data-category="sections" data-caption="Atelier Construction"
+                            style="height:220px">
+                            <img src="./pictures/cons.webp" alt="Atelier Construction de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
+                        </div>
+                        <div class="gal-item reveal" data-category="sections" data-caption="Atelier Coupe Couture"
+                            style="height:220px">
+                            <img src="./pictures/couture.jpg" alt="Atelier Coupe Couture de l'Institut Kyeshero"
+                                loading="lazy">
+                            <span class="gal-item-overlay"><i class="fa-solid fa-expand"></i></span>
                         </div>
                     </div>
+
+                    <p class="gallery-empty" id="galleryEmpty" hidden>Aucune photo dans cette catégorie pour le
+                        moment.
+                    </p>
                 </div>
             </section>
         </div>
 
+        <!-- LIGHTBOX -->
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+            <button class="lightbox-close" id="lightboxClose" aria-label="Fermer"><i
+                    class="fa-solid fa-xmark"></i></button>
+            <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Photo précédente"><i
+                    class="fa-solid fa-chevron-left"></i></button>
+            <figure class="lightbox-figure">
+                <img src="" alt="" id="lightboxImg">
+                <figcaption id="lightboxCaption"></figcaption>
+            </figure>
+            <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Photo suivante"><i
+                    class="fa-solid fa-chevron-right"></i></button>
+        </div>
+
+        <!-- FOOTER -->
         <!-- FOOTER -->
         <footer id="main-footer">
             <div class="footer-grid">
                 <div class="footer-brand">
                     <div class="footer-logo-row">
                         <div class="logo-emblem">
-                            <img src="./logos/logo (2).png" alt="logo">
+                            <img src="./logos/logo (2).png" alt="Institut Kyeshero">
                         </div>
                         <span class="footer-brand-name">Institut Kyeshero</span>
                     </div>
                     <p class="footer-brand-desc">École conventionnée protestante de la 8e CEPAC, formant depuis 1997
                         les jeunes de Goma aux valeurs d'excellence, de discipline et de foi.</p>
                     <div class="footer-socials">
-                        <a href="#"><img src="./icons/book.png"></a>
-                        <a href="#"><img src="./icons/x.png"></a>
-                        <a href="#"><img src="./icons/insta.png"></a>
-                        <!-- <a href="#"><img src="./icons/whastapp.png"></a> -->
+                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://wa.me/243971234567" aria-label="WhatsApp" target="_blank"><i
+                                class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
-                <div class="footer-col">
-                    <h4>Accès rapide</h4>
+
+                <details class="footer-col" open>
+                    <summary>Accès rapide <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
                     <ul>
                         <li><a href="index.html">Accueil</a></li>
                         <li><a href="sections.html">Nos sections</a></li>
@@ -165,43 +304,47 @@
                         <li><a href="galerie.html">Galerie</a></li>
                         <li><a href="propos.html">À propos</a></li>
                         <li><a href="contacts.html">Contact</a></li>
+                        <li><a href="inscriptions.html">Inscription</a></li>
+                        <li><a href="espacenumerique.html">Espace Numérique</a></li>
                     </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Sections</h4>
+                </details>
+
+                <details class="footer-col" open>
+                    <summary>Nos sections <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
                     <ul>
-                        <li><a href="#">Construction</a></li>
-                        <li><a href="#">Coupe Couture</a></li>
-                        <li><a href="#">Électricité</a></li>
-                        <li><a href="#">Mécanique</a></li>
-                        <li><a href="#">Education de base</a></li>
+                        <li><a href="sections.html#construction">Construction</a></li>
+                        <li><a href="sections.html#couture">Coupe Couture</a></li>
+                        <li><a href="sections.html#electricite">Électricité</a></li>
+                        <li><a href="sections.html#mecanique">Mécanique</a></li>
+                        <li><a href="sections.html#base">Éducation de base</a></li>
                     </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Contact</h4>
+                </details>
+
+                <details class="footer-col" open>
+                    <summary>Contact <i class="fa-solid fa-chevron-down footer-caret"></i></summary>
                     <ul>
-                        <li><a href="#">Av. Kyeshero, Goma</a></li>
-                        <li><a href="#">+243 97 123 4567</a></li>
-                        <li><a href="#">contact@ikyeshero-goma.cd</a></li>
-                        <li><a href="#">Lun-Ven 7h30-16h30</a></li>
+                        <li><a href="https://maps.google.com/?q=Institut+Kyeshero+Goma" target="_blank"><i
+                                    class="fa-solid fa-location-dot"></i> Av. Kyeshero, Goma</a></li>
+                        <li><a href="tel:+243971234567"><i class="fa-solid fa-phone"></i> +243 97 123 4567</a></li>
+                        <li><a href="mailto:contact@institutkyeshero.com"><i class="fa-solid fa-envelope"></i>
+                                contact@institutkyeshero.com</a></li>
+                        <li><span><i class="fa-solid fa-clock"></i> Lun–Ven 7h30–16h30</span></li>
                     </ul>
-                </div>
+                </details>
             </div>
             <div class="footer-bottom">
-                <span>&copy; 2026 Institut Kyeshero de Goma — Tous droits réservés</span>
-                <div class="footer-motto">
-                    <span style="font-size:13px;color:rgba(255,255,255,.5)">
-                        Conçu par EbenJosh Tech & Services
-                    </span>
-                </div>
+                <span>&copy; 2026 Institut Kyeshero — Tous droits réservés</span>
+                <span class="footer-credit">Conçu par EbenJosh Tech & Services</span>
             </div>
         </footer>
         <!-- WHATSAPP -->
-        <a href="https://wa.me/243971234567" class="wa-btn" target="_blank">
-            <img src="./icons/whastap.png">
+        <a href="https://wa.me/243971234567" class="wa-btn" aria-label="Contacter sur WhatsApp" target="_blank">
+            <i class="fa-brands fa-whatsapp"></i>
         </a>
 
         <script src="index.js"></script>
+        <script src="footer.js"></script>
+        <script src="galerie.js"></script>
 </body>
 
 </html>

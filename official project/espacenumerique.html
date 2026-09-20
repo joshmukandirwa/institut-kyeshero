@@ -5,13 +5,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espace Numérique</title>
-  <meta name="description"
-    content="Espace numérique de l'Institut Kyeshero : connexion des élèves pour consulter frais scolaires, bulletin et présences.">
-  <meta name="robots" content="noindex, nofollow">
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="numerique.css" />
   <link rel="icon" href="./pictures/logos/logoshaut2.png">
 </head>
@@ -72,15 +68,10 @@
       <!-- ── Formulaire Élève ── -->
       <div id="formEleve" class="login-form">
         <h2>Connexion Élève</h2>
-
         <p class="sub">
-          Le tableau de bord élève est temporairement en maintenance.
-          Les fonctionnalités reviendront automatiquement dès la fin de la maintenance.
-        </p>
-
-        <!-- <p class="sub">
           Entrez vos informations pour accéder à vos résultats.
         </p>
+
         <div class="field">
           <label>Numéro Matricule</label>
           <input type="text" id="matricule" placeholder="Ex : E2026" maxlength="10"
@@ -101,7 +92,7 @@
 
         <button class="btn-login" id="btnLogin" onclick="seConnecter()">
           SE CONNECTER
-        </button> -->
+        </button>
       </div>
 
       <!-- ── Formulaire Parent ── -->
@@ -111,8 +102,45 @@
           Le tableau de bord parent complet arrive très bientôt.
         </p>
 
+        <!-- <div class="field">
+            <label>Adresse Email</label>
+            <input
+              type="email"
+              id="emailParent"
+              placeholder="Ex : parent@email.com"
+            />
+          </div>
+
+          <div class="field">
+            <label>Nombre d'enfants</label>
+            <select id="nbEnfants" onchange="genererChampsEnfants()">
+              <option value="">— Sélectionnez —</option>
+              <option value="1">1 enfant</option>
+              <option value="2">2 enfants</option>
+              <option value="3">3 enfants</option>
+              <option value="4">4 enfants</option>
+              <option value="5">5 enfants</option>
+            </select>
+          </div>
+
+          <div id="champsEnfants"></div>
+
+          <div class="verif-anim" id="verifAnim">
+            <div class="verif-spinner"></div>
+            <p class="verif-title">Vérification du lien email ↔ matricule…</p>
+            <div class="verif-list" id="verifList"></div>
+          </div>
+
+          <button
+            class="btn-login"
+            id="btnLoginParent"
+            onclick="seConnecterParent()"
+          >
+            SE CONNECTER
+          </button> -->
+
         <div class="success-box" id="successBox">
-          <div class="ico"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="ico">✅</div>
           <p id="successMsg">
             <strong>Vérification réussie</strong>Votre adresse a bien été
             reconnue.
@@ -122,7 +150,7 @@
 
       <!-- ── Zones communes (erreur / info / blocage) ── -->
       <div class="error-box" id="errorBox">
-        <div class="ico"><i class="fa-solid fa-circle-exclamation"></i></div>
+        <div class="ico">🚫</div>
         <p id="errorMsg">
           <strong>Informations incorrectes</strong>Matricule, date de
           naissance ou classe invalide. Vérifiez vos données.
@@ -130,7 +158,7 @@
       </div>
 
       <div class="info-box" id="infoBox">
-        <div class="ico"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <div class="ico">🛠️</div>
         <p id="infoMsg">
           <strong>Bientôt disponible</strong>La connexion parent est en cours
           de finalisation.
@@ -165,12 +193,12 @@
     <div class="dash-body">
       <!-- Profil -->
       <div class="profil-card">
-        <div class="avatar" id="avatarEleve"><i class="fa-solid fa-user"></i></div>
+        <div class="avatar" id="avatarEleve">👤</div>
         <div class="profil-info">
           <h2 id="nomEleve">—</h2>
-          <p><i class="fa-solid fa-id-card"></i> <span id="matriculeEleve">Matricule : —</span></p>
-          <p><i class="fa-solid fa-chalkboard-user"></i> <span id="classeEleve">Classe : —</span></p>
-          <p><i class="fa-solid fa-phone"></i> <span id="telParentEleve">Contact parent : —</span></p>
+          <p id="matriculeEleve">Matricule : —</p>
+          <p id="classeEleve">Classe : —</p>
+          <p id="telParentEleve">Contact parent : —</p>
           <div class="profil-badges">
             <span class="badge-pill">Année 2026-2027</span>
             <span class="badge-pill" id="sectionBadge">—</span>
@@ -179,58 +207,51 @@
         </div>
       </div>
 
-      <!-- Colonne principale -->
-      <div class="dash-main">
-        <!-- Frais scolaires (toujours visible) -->
-        <div class="info-card" id="infoCard">
-          <h3><i class="fa-solid fa-wallet"></i> Frais scolaires</h3>
-          <div class="info-grid">
-            <div class="info-item">
-              <span class="info-ico"><i class="fa-solid fa-file-invoice"></i></span>
-              <span class="label">Frais annuels</span>
-              <span class="value" id="fraisAnnuels">— FC</span>
-            </div>
-            <div class="info-item">
-              <span class="info-ico paye"><i class="fa-solid fa-circle-check"></i></span>
-              <span class="label">Montant payé</span>
-              <span class="value paye" id="montantPaye">— FC</span>
-            </div>
-            <div class="info-item">
-              <span class="info-ico reste"><i class="fa-solid fa-triangle-exclamation"></i></span>
-              <span class="label">Reste à payer</span>
-              <span class="value reste" id="resteAPayer">— FC</span>
-            </div>
-            <div class="info-item">
-              <span class="info-ico"><i class="fa-regular fa-calendar"></i></span>
-              <span class="label">Dernier versement</span>
-              <span class="value" id="dernierVersement">—</span>
-            </div>
+      <!-- Frais scolaires (toujours visible) -->
+      <div class="info-card" id="infoCard">
+        <h3>Frais scolaires</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="label">Frais annuels</span>
+            <span class="value" id="fraisAnnuels">— FC</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Montant payé</span>
+            <span class="value paye" id="montantPaye">— FC</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Reste à payer</span>
+            <span class="value reste" id="resteAPayer">— FC</span>
+          </div>
+          <div class="info-item">
+            <span class="label">Dernier versement</span>
+            <span class="value" id="dernierVersement">—</span>
           </div>
         </div>
+      </div>
 
-        <!-- Carte des notes -->
-        <div class="notes-card">
-          <div class="card-head">
-            <h3><i class="fa-solid fa-book-open"></i> Bulletin des Notes</h3>
-            <span>Année 2026-2027</span>
-          </div>
-
-          <div class="notes-placeholder">
-            <div class="placeholder-ico"><i class="fa-solid fa-folder-open"></i></div>
-            <h3>Résultats bientôt disponibles</h3>
-            <p>
-              Le module de bulletin numérique est en cours de finalisation. Vos
-              notes s'afficheront ici dès qu'elles seront publiées par
-              l'administration.
-            </p>
-          </div>
+      <!-- Carte des notes -->
+      <div class="notes-card">
+        <div class="card-head">
+          <h3>Bulletin des Notes</h3>
+          <span>Année 2026-2027</span>
         </div>
 
-        <!-- Absences -->
-        <div class="absences-card">
-          <h3><i class="fa-solid fa-calendar-days"></i> Absences & Présences</h3>
-          <div id="absencesList"></div>
+        <div class="notes-placeholder">
+          <div class="placeholder-ico">🗂️</div>
+          <h3>Résultats bientôt disponibles</h3>
+          <p>
+            Le module de bulletin numérique est en cours de finalisation. Vos
+            notes s'afficheront ici dès qu'elles seront publiées par
+            l'administration.
+          </p>
         </div>
+      </div>
+
+      <!-- Absences -->
+      <div class="absences-card">
+        <h3>Absences & Présences</h3>
+        <div id="absencesList"></div>
       </div>
     </div>
   </div>

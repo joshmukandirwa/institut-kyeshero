@@ -5,17 +5,49 @@ const CLOUDINARY_PRESET = "temoignages_ikyeshero";
 // ══ EMAILJS INIT ══
 emailjs.init("AGXhkUZPEkhm_AIZ6");
 
+// ══ NAV SCROLL ══
+window.addEventListener("scroll", () => {
+  document.getElementById("navbar").classList.toggle("scrolled", scrollY > 40);
+  const el = document.getElementById("progress");
+  if (el) {
+    const pct = (scrollY / (document.body.scrollHeight - innerHeight)) * 100;
+    el.style.width = pct + "%";
+  }
+});
+
+// ══ MOBILE NAV ══
+function openMobileNav() {
+  document.getElementById("mobileNav").classList.add("open");
+}
+
+function closeMobileNav() {
+  document.getElementById("mobileNav").classList.remove("open");
+}
+
+// ══ SCROLL REVEAL ══
+const revealObs = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) e.target.classList.add("visible");
+    });
+  },
+  {
+    threshold: 0.15,
+  },
+);
+document.querySelectorAll(".reveal").forEach((el) => revealObs.observe(el));
+
 // ══ ÉTOILES ══
 let selectedNote = 0;
 const starBtns = document.querySelectorAll(".star-btn");
 const starsHint = document.getElementById("starsHint");
 const hintTexts = [
   "",
-  "Passable - nous allons nous améliorer",
-  "Acceptable - merci pour votre honnêteté",
-  "Bien - nous continuons à progresser",
-  "Très bien - merci du fond du cœur !",
-  "Excellent - vous êtes formidable !",
+  "😕 Passable - nous allons nous améliorer",
+  "😐 Acceptable - merci pour votre honnêteté",
+  "🙂 Bien - nous continuons à progresser",
+  "😊 Très bien - merci du fond du cœur !",
+  "🤩 Excellent - vous êtes formidable !",
 ];
 
 function litStars(n) {
@@ -60,7 +92,7 @@ function handlePhotoFile(file) {
   if (file.size > 8 * 1024 * 1024) {
     showToast(
       "error",
-      "Fichier trop lourd",
+      "📁 Fichier trop lourd",
       "La photo dépasse 8 Mo. Choisissez-en une plus légère — merci !",
       "Choisir une autre photo",
     );
@@ -113,10 +145,7 @@ function showToast(type, title, msg, btnLabel) {
   const closeBtn = document.getElementById("toastClose");
 
   icon.className = "toast-icon " + type;
-  icon.innerHTML =
-    type === "success"
-      ? '<i class="fa-solid fa-circle-check"></i>'
-      : '<i class="fa-solid fa-circle-exclamation"></i>';
+  icon.textContent = type === "success" ? "🎉" : "😔";
   titleEl.textContent = title;
   msgEl.innerHTML = msg; // innerHTML pour le lien cliquable
   closeBtn.textContent = btnLabel;
@@ -148,7 +177,7 @@ async function sendTemoignage() {
   if (!note) {
     showToast(
       "error",
-      "Note manquante",
+      "⭐ Note manquante",
       "Vous n'avez pas encore choisi votre note. Cliquez sur le nombre d'étoiles que vous souhaitez donner — de 1 à 5.",
       "Revenir au formulaire",
     );
@@ -181,7 +210,7 @@ async function sendTemoignage() {
     const params = {
       nom,
       email,
-      note: "★".repeat(note) + " (" + note + "/5)",
+      note: "⭐".repeat(note) + " (" + note + "/5)",
       temoignage,
       photo_url: photoUrl,
     };
@@ -195,7 +224,7 @@ async function sendTemoignage() {
       "success",
       "Merci, " + nom.split(" ")[0] + " ! ",
       "Votre témoignage a bien été reçu et nous touche profondément. Nous allons l'examiner avec soin avant de le partager avec notre communauté. Que Dieu vous bénisse !",
-      "Fermer et revenir",
+      "✓ Fermer et revenir",
     );
 
     // Reset

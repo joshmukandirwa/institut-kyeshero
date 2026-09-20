@@ -320,12 +320,10 @@
 
 .toast-icon.success {
   background: #e8f8ef;
-  color: #2e7d4f;
 }
 
 .toast-icon.error {
   background: #fdf0ef;
-  color: #b4402f;
 }
 
 .toast-box h4 {

@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initRevealOnScroll();
   initCountUp();
-  initBackToTop();
 });
 
 /* ---------- Navbar : ombre au scroll ---------- */
@@ -201,25 +200,4 @@ function initCountUp() {
   );
 
   counters.forEach((el) => observer.observe(el));
-}
-
-/* ---------- Bouton "Retour en haut" ---------- */
-function initBackToTop() {
-  const btn = document.createElement("button");
-  btn.className = "back-to-top";
-  btn.setAttribute("aria-label", "Retour en haut de la page");
-  btn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-  document.body.appendChild(btn);
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      btn.classList.toggle("visible", window.scrollY > 500);
-    },
-    { passive: true },
-  );
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
 }

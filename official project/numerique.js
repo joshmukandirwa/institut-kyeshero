@@ -358,6 +358,163 @@ function cacherSucces() {
   document.getElementById("successBox").classList.remove("show");
 }
 
+/* ══ CHAMPS DYNAMIQUES SELON LE NOMBRE D'ENFANTS ══ */
+function genererChampsEnfants() {
+  var n = parseInt(document.getElementById("nbEnfants").value) || 0;
+  var container = document.getElementById("champsEnfants");
+  container.innerHTML = "";
+
+  for (var i = 1; i <= n; i++) {
+    var div = document.createElement("div");
+    div.className = "field champ-enfant";
+    div.innerHTML =
+      "<label>Matricule enfant " +
+      i +
+      "</label>" +
+      '<input type="text" class="matricule-enfant" id="matriculeEnfant' +
+      i +
+      '" placeholder="Ex : E2026" maxlength="10" oninput="this.value=this.value.toUpperCase()" />';
+    container.appendChild(div);
+  }
+
+  cacherErreur();
+  cacherInfo();
+  cacherSucces();
+}
+
+/* ══ CONNEXION PARENT ══
+   ⚠️ La vérification finale (email ↔ matricules) est pour l'instant simulée
+   côté client à partir des données déjà chargées (ELEVES). Elle sera remplacée
+   par un appel à la Cloud Function loginParent, qui interrogera
+   parents/{email}.matricules dans Firestore, dès le backend en place. */
+function seConnecterParent() {
+  if (bloque) return;
+
+  cacherSucces();
+
+  var email = document.getElementById("emailParent").value.trim();
+  var n = parseInt(document.getElementById("nbEnfants").value) || 0;
+
+  if (!email) {
+    afficherErreur("Veuillez saisir votre adresse email.");
+    agiter();
+    return;
+  }
+
+  var emailValide = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailValide) {
+    afficherErreur("Adresse email invalide. Veuillez vérifier votre saisie.");
+    agiter();
+    return;
+  }
+
+  if (!n) {
+    afficherErreur("Veuillez sélectionner le nombre d'enfants.");
+    agiter();
+    return;
+  }
+
+  var matricules = [];
+  for (var i = 1; i <= n; i++) {
+    var champ = document.getElementById("matriculeEnfant" + i);
+    var val = champ.value.trim().toUpperCase();
+    if (!val) {
+      afficherErreur("Veuillez renseigner le matricule de chaque enfant.");
+      agiter();
+      return;
+    }
+    var fmt = validerFormatMatricule(val);
+    if (fmt !== "ok") {
+      afficherErreur(
+        "Matricule enfant " +
+        i +
+        " incorrect. Veuillez vérifier le numéro matricule et réessayer. ",
+      );
+      agiter();
+      return;
+    }
+    matricules.push(val);
+  }
+
+  lancerVerificationParent(email, matricules);
+}
+
+function lancerVerificationParent(email, matricules) {
+  if (ELEVES.length === 0) {
+    chargerDepuisSheets(function () {
+      lancerVerificationParent(email, matricules);
+    });
+    return;
+  }
+
+  cacherErreur();
+  cacherInfo();
+
+  var btn = document.getElementById("btnLoginParent");
+  btn.disabled = true;
+  btn.style.opacity = ".5";
+
+  var anim = document.getElementById("verifAnim");
+  var list = document.getElementById("verifList");
+  list.innerHTML = "";
+  anim.classList.add("show");
+
+  matricules.forEach(function (mat) {
+    var item = document.createElement("div");
+    item.className = "verif-item";
+    item.id = "verifItem-" + mat;
+    item.innerHTML =
+      '<span class="verif-dot"></span>' +
+      '<span class="verif-label">Matricule ' +
+      mat +
+      "</span>" +
+      '<span class="verif-check">✓</span>';
+    list.appendChild(item);
+  });
+
+  var i = 0;
+  function etapeSuivante() {
+    if (i >= matricules.length) {
+      setTimeout(function () {
+        terminerVerificationParent(email, matricules);
+      }, 450);
+      return;
+    }
+    var item = document.getElementById("verifItem-" + matricules[i]);
+    item.classList.add("checked");
+    i++;
+    setTimeout(etapeSuivante, 550);
+  }
+  setTimeout(etapeSuivante, 550);
+}
+
+function terminerVerificationParent(email, matricules) {
+  var tousExistent = matricules.every(function (mat) {
+    return ELEVES.some(function (e) {
+      return e.matricule === mat;
+    });
+  });
+
+  document.getElementById("verifAnim").classList.remove("show");
+  var btn = document.getElementById("btnLoginParent");
+  btn.disabled = false;
+  btn.style.opacity = "1";
+
+  if (tousExistent) {
+    afficherSucces(
+      "<strong>Vérification réussie</strong>Adresse reconnue pour " +
+      matricules.length +
+      (matricules.length > 1 ? " enfants." : " enfant.") +
+      " Le tableau de bord parent complet arrive très bientôt.",
+    );
+  } else {
+    afficherErreur(
+      "Un ou plusieurs matricules ne correspondent à aucun élève enregistré. Veuillez vérifier vos informations.",
+    );
+    agiter();
+  }
+}
+
 function agiter() {
   var card = document.querySelector(".login-card");
   card.classList.remove("shake");
@@ -394,10 +551,8 @@ function remplirProfil(e) {
   document.getElementById("telParentEleve").textContent =
     "Contact parent : " + (e.telephone_parent || "—");
   document.getElementById("sectionBadge").textContent = e.classe;
-  var iconAvatar =
-    e.sexe === "M" ? "fa-mars" : e.sexe === "F" ? "fa-venus" : "fa-user";
-  document.getElementById("avatarEleve").innerHTML =
-    '<i class="fa-solid ' + iconAvatar + '"></i>';
+  document.getElementById("avatarEleve").textContent =
+    e.sexe === "M" ? "👦" : e.sexe === "F" ? "👧" : "👤";
 
   var statutBadge = document.getElementById("statutBadge");
   statutBadge.textContent = e.statut || "—";
@@ -426,7 +581,7 @@ function remplirAbsences(e) {
   absDiv.innerHTML = "";
   if (!e.absences || e.absences.length === 0) {
     absDiv.innerHTML =
-      '<div class="empty-state"><span class="empty-ico"><i class="fa-solid fa-calendar-check"></i></span>Aucune absence enregistrée.</div>';
+      '<div class="empty-state"><span class="empty-ico">🗓️</span>Aucune absence enregistrée.</div>';
   } else {
     e.absences.forEach(function (a) {
       var div = document.createElement("div");
@@ -440,9 +595,7 @@ function remplirAbsences(e) {
         '<span class="abs-status ' +
         a.statut +
         '">' +
-        (a.statut === "just"
-          ? '<i class="fa-solid fa-check"></i> Justifiée'
-          : '<i class="fa-solid fa-xmark"></i> Non justifiée') +
+        (a.statut === "just" ? "✔ Justifiée" : "✖ Non justifiée") +
         "</span>";
       absDiv.appendChild(div);
     });

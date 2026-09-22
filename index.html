@@ -132,7 +132,10 @@
                 <a href="contacts.html">Contact</a>
                 <a href="inscriptions.html">Inscription</a>
                 <a href="temoignages.html">Témoignages</a>
-                <a href="espacenumerique.html" class="nav-espace">Espace Numérique</a>
+                <a href="espacenumerique.html" class="nav-espace">
+                    <img src="./icons/profil connexion (1).png" style="width: 15px;">
+                    Espace Numérique
+                </a>
             </div>
             <div class="hamburger" onclick="openMobileNav()">
                 <span></span><span></span><span></span>
@@ -147,10 +150,12 @@
                     <div class="logo-emblem">
                         <img src="./logos/logo (2).png" alt="logo">
                     </div>
-                    <!-- <div class="logo-text" style="filter:invert(1) brightness(2)">
+                    <div class="logo-text">
                         <h1>Institut Kyeshero</h1>
-                        <p>Conscience dans le travail et la discipline</p>
-                    </div> -->
+                        <p style="font-size: 8px;">
+                            Conscience dans le travail et la discipline
+                        </p>
+                    </div>
                 </div>
                 <button class="mob-close" onclick="closeMobileNav()"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -160,9 +165,12 @@
             <a href="galerie.html">Galerie</a>
             <a href="propos.html">À Propos</a>
             <a href="contacts.html">Contact</a>
-            <a href="inscriptions.html" style="color:var(--gold-light)">Inscription</a>
-            <a href="temoignages.html" style="color:var(--gold-light)">Témoignages</a>
-            <a href="espacenumerique.html" style="color:var(--gold-light)">Espace Numérique</a>
+            <a href="inscriptions.html">Inscription</a>
+            <a href="temoignages.html">Témoignages</a>
+            <a href="espacenumerique.html" style="color:var(--gold-light);display: flex; gap: 10px;">
+                <img src="./icons/profil connexion (1).png" style="width: 25px;">
+                Espace Numérique
+            </a>
         </div>
 
         <!-- ─── HOME ─── -->
@@ -214,8 +222,8 @@
                         <div class="lbl">Année de fondation</div>
                     </div>
                     <div class="hero-stat">
-                        <div class="num">+2000</div>
-                        <div class="lbl">Élèves inscrits</div>
+                        <div class="num">+1600</div>
+                        <div class="lbl">inscrits</div>
                     </div>
                     <div class="hero-stat">
                         <div class="num">4</div>
@@ -326,6 +334,22 @@
                                 <a href="#" class="news-link">Lire la suite <span class="arrow">→</span></a>
                             </div>
                         </div> -->
+
+                        <div class="news-card reveal">
+                            <div class="news-img" style="background-image:url('./assets/rentrée.jpeg'); height: 250px;">
+                                <div class="news-category">Rentrée</div>
+                            </div>
+                            <div class="news-body">
+                                <div class="news-date">01 Septembre 2026</div>
+                                <div class="news-title">Rentrée scolaire 2026-2027 : bienvenue aux nouveaux élèves</div>
+                                <!-- <div class="news-excerpt">L'Institut Kyeshero accueille chaleureusement ses nouveaux
+                                    élèves pour une année scolaire placée sous le signe de l'excellence.</div> -->
+                                <a class="news-link" href="actualites.html">Lire la suite
+                                    <span class="arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
                         <div class="news-card reveal">
                             <div class="news-img tall"
                                 style="background-image:url(./pictures/incendies.jpg); height: 250px;">
@@ -336,21 +360,6 @@
                                 <div class="news-title">Incendie au bureau de l'Institut Kyeshero</div>
                                 <!-- <div class="news-excerpt">Le jeudi 14 mai 2026, un incendie s'est déclaré dans les
                                     installations de l'Institut Kyeshero, à Goma, en début d'après-midi.</div> -->
-                                <a class="news-link" href="actualites.html">Lire la suite
-                                    <span class="arrow">→</span>
-                                </a>
-                            </div>
-                        </div>
-                        <!-- Card 2 -->
-                        <div class="news-card reveal">
-                            <div class="news-img" style="background-image:url('./assets/rentrée.jpeg'); height: 250px;">
-                                <div class="news-category">Rentrée</div>
-                            </div>
-                            <div class="news-body">
-                                <div class="news-date">01 Septembre 2026</div>
-                                <div class="news-title">Rentrée scolaire 2026-2027 : bienvenue aux nouveaux élèves</div>
-                                <!-- <div class="news-excerpt">L'Institut Kyeshero accueille chaleureusement ses nouveaux
-                                    élèves pour une année scolaire placée sous le signe de l'excellence.</div> -->
                                 <a class="news-link" href="actualites.html">Lire la suite
                                     <span class="arrow">→</span>
                                 </a>
@@ -417,7 +426,7 @@
                         <div class="stat-lbl">Années d'existence</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-num">+<span class="count-up" data-target="2000">0</span></span>
+                        <span class="stat-num">+<span class="count-up" data-target="1600">0</span></span>
                         <div class="stat-lbl">Élèves inscrits</div>
                     </div>
                     <div class="stat-item">
@@ -425,7 +434,7 @@
                         <div class="stat-lbl">Bâtiments scolaires</div>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-num"><span class="count-up" data-target="75">0</span></span>
+                        <span class="stat-num">+<span class="count-up" data-target="75">0</span></span>
                         <div class="stat-lbl">Enseignants & personnels</div>
                     </div>
                 </div>
@@ -556,10 +565,12 @@
                     <p class="footer-brand-desc">École conventionnée protestante de la 8e CEPAC, formant depuis 1997
                         les jeunes de Goma aux valeurs d'excellence, de discipline et de foi.</p>
                     <div class="footer-socials">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/243971234567" aria-label="WhatsApp" target="_blank"><i
+                        <a href="#" aria-label="Facebook" class="js-coming-soon"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="X" class="js-coming-soon"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram" class="js-coming-soon"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp" class="js-coming-soon"><i
                                 class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -597,18 +608,27 @@
                         <li><a href="tel:+243971234567"><i class="fa-solid fa-phone"></i> +243 97 123 4567</a></li>
                         <li><a href="mailto:contact@institutkyeshero.com"><i class="fa-solid fa-envelope"></i>
                                 contact@institutkyeshero.com</a></li>
-                        <li><span><i class="fa-solid fa-clock"></i> Lun-Ven 7h30–16h30</span></li>
+                        <li><span><i class="fa-solid fa-clock"></i> Lun-Ven 7h30-16h30</span></li>
                     </ul>
                 </details>
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Institut Kyeshero — Tous droits réservés</span>
-                <span class="footer-credit">Conçu par EbenJosh Tech & Services</span>
+            </div>
+            <div class="footer-dev">
+                <div class="footer-dev-info">
+                    <span>Web developer Josué Mukandirwa</span>
+                    <span>Contact : +243 995 876 855</span>
+                    <span>Email : Joshmukandirwa@gmail.com</span>
+                </div>
+                <div class="footer-dev-logo">
+                    <img src="./logos/ebenjosh-tech-logo.png" alt="EbenJosh Tech & Services">
+                </div>
             </div>
         </footer>
 
         <!-- WHATSAPP -->
-        <a href="https://wa.me/243971234567" class="wa-btn" aria-label="Contacter sur WhatsApp" target="_blank">
+        <a href="#" class="wa-btn js-coming-soon" aria-label="Contacter sur WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
 

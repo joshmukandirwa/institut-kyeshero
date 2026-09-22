@@ -93,7 +93,10 @@
                 <a href="contacts.html">Contact</a>
                 <a href="inscriptions.html">Inscription</a>
                 <a href="temoignages.html" class="active">Témoignages</a>
-                <a href="espacenumerique.html" class="nav-espace">Espace Numérique</a>
+                <a href="espacenumerique.html" class="nav-espace">
+                    <img src="./icons/profil connexion (1).png" style="width: 15px;">
+                    Espace Numérique
+                </a>
             </div>
             <div class="hamburger" onclick="openMobileNav()">
                 <span></span><span></span><span></span>
@@ -107,10 +110,12 @@
                     <div class="logo-emblem">
                         <img src="./logos/logo (2).png" alt="logo">
                     </div>
-                    <!-- <div class="logo-text" style="filter:invert(1) brightness(2)">
+                    <div class="logo-text">
                         <h1>Institut Kyeshero</h1>
-                        <p>Conscience dans le travail et la discipline</p>
-                    </div> -->
+                        <p style="font-size: 8px;">
+                            Conscience dans le travail et la discipline
+                        </p>
+                    </div>
                 </div>
                 <button class="mob-close" onclick="closeMobileNav()"><i class="fa-solid fa-xmark"></i></button>
             </div>
@@ -120,9 +125,12 @@
             <a href="galerie.html">Galerie</a>
             <a href="propos.html">À Propos</a>
             <a href="contacts.html">Contact</a>
-            <a href="inscriptions.html" style="color:var(--gold-light)">Inscription</a>
-            <a href="temoignages.html" style="color:var(--gold-light)">Témoignages</a>
-            <a href="espacenumerique.html" style="color:var(--gold-light)">Espace Numérique</a>
+            <a href="inscriptions.html">Inscription</a>
+            <a href="temoignages.html">Témoignages</a>
+            <a href="espacenumerique.html" style="color:var(--gold-light);display: flex; gap: 10px;">
+                <img src="./icons/profil connexion (1).png" style="width: 25px;">
+                Espace Numérique
+            </a>
         </div>
 
         <div id="view-temoignages">
@@ -297,10 +305,12 @@
                     <p class="footer-brand-desc">École conventionnée protestante de la 8e CEPAC, formant depuis 1997
                         les jeunes de Goma aux valeurs d'excellence, de discipline et de foi.</p>
                     <div class="footer-socials">
-                        <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="https://wa.me/243971234567" aria-label="WhatsApp" target="_blank"><i
+                        <a href="#" aria-label="Facebook" class="js-coming-soon"><i
+                                class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" aria-label="X" class="js-coming-soon"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" aria-label="Instagram" class="js-coming-soon"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="WhatsApp" class="js-coming-soon"><i
                                 class="fa-brands fa-whatsapp"></i></a>
                     </div>
                 </div>
@@ -344,12 +354,21 @@
             </div>
             <div class="footer-bottom">
                 <span>&copy; 2026 Institut Kyeshero — Tous droits réservés</span>
-                <span class="footer-credit">Conçu par EbenJosh Tech & Services</span>
+            </div>
+            <div class="footer-dev">
+                <div class="footer-dev-info">
+                    <span>Web developer Josué Mukandirwa</span>
+                    <span>Contact : +243 995 876 855</span>
+                    <span>Email : Joshmukandirwa@gmail.com</span>
+                </div>
+                <div class="footer-dev-logo">
+                    <img src="./logos/ebenjosh-tech-logo.png" alt="EbenJosh Tech & Services">
+                </div>
             </div>
         </footer>
 
         <!-- WHATSAPP -->
-        <a href="https://wa.me/243971234567" class="wa-btn" aria-label="Contacter sur WhatsApp" target="_blank">
+        <a href="#" class="wa-btn js-coming-soon" aria-label="Contacter sur WhatsApp">
             <i class="fa-brands fa-whatsapp"></i>
         </a>
         <script src="temoignage.js"></script>
